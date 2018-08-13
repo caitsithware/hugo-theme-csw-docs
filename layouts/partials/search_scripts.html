@@ -1,0 +1,11 @@
+<script src="{{ "/js/lunr/lunr.js" | relLangURL }}"></script>
+<script src="{{ "/js/lunr/lunr.stemmer.support.js" | relLangURL }}"></script>
+{{- if (ne .Site.Language.Lang "en") -}}
+<script src="{{ "/js/lunr/tinyseg.js" | relLangURL }}"></script>
+<script src="{{ (printf "/js/lunr/lunr.%s.min.js" .Site.Language) | relLangURL }}"></script>
+<script src="{{ "/js/lunr/lunr.multi.min.js" | relLangURL }}"></script>
+{{- end -}}
+{{- $searchIndexJS := resources.Get "js/search_index.js" | resources.ExecuteAsTemplate "/js/search_index.js" . }}
+<script src="{{ $searchIndexJS.RelPermalink | relLangURL }}"></script>
+{{- $searchResJS := resources.Get "js/search.js" | resources.ExecuteAsTemplate "/js/search.js" . }}
+<script src="{{ $searchResJS.RelPermalink | relLangURL }}"></script>

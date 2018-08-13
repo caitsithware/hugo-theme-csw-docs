@@ -1,0 +1,19 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        {{- template "breadcrumb" (dict "node" . "current" .) }}
+    </ol>
+</nav>
+
+{{- define "breadcrumb" }}
+    {{- if .node.Parent }}
+        {{- template "breadcrumb" (dict "node" .node.Parent "current" .current) }}
+    {{- else if not .node.IsHome }}
+        {{- template "breadcrumb" (dict "node" .node.Site.Home "current" .current) }}
+    {{- end }}
+
+    {{- if eq .node .current }}
+        <li class="breadcrumb-item active" aria-current="page">{{ .node.LinkTitle }}</li>
+    {{- else }}
+        <li class="breadcrumb-item"><a href="{{ .node.Permalink }}">{{ .node.LinkTitle }} </a></li>
+    {{- end }}
+{{- end }}

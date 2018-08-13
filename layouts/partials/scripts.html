@@ -1,0 +1,22 @@
+<script src="{{ "/js/jquery-3.3.1.min.js" | relURL }}"></script>
+<script src="{{ "/js/jquery.query-parameter.js" | relURL }}"></script>
+<script src="{{ "/js/bootstrap.bundle.min.js" | relURL }}"></script>
+<script src="{{ "/js/bootstrap-dropdown-hover.js" | relURL }}"></script>
+<script src="{{ "/js/headerlink.js" | relURL }}"></script>
+<script src="{{ "/js/gifffer.min.js" | relURL }}"></script>
+<script>
+$(function() {
+    Gifffer();
+});
+</script>
+<script src="{{ "/js/sidebar.js" | relURL }}"></script>
+{{- with $searchPage := .Site.GetPage .Site.Params.SearchPage }}
+<script src="{{ "/js/searchbox.js" | relURL }}"></script>
+{{- end }}
+{{- $pagePath := (replace (printf "/%s" .File.Path) "\\" "/") }}
+{{- if (eq .Site.Params.SearchPage $pagePath) }}
+{{- partial "search_scripts.html" . -}}
+{{- end }}
+{{- range .Site.Params.CustomScripts }}
+<script src="{{ . | relURL }}"></script>
+{{- end }}

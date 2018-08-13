@@ -1,0 +1,12 @@
+<div class="container">
+    <div id="main-content">
+        {{ .Content }}
+    </div>
+    <div class="search-spinner">
+        <h2>{{ i18n "Search-spinner" }}</h2>
+        <div class="loading-spinner"></div>
+    </div>
+    <div id="search-results">
+    </div>
+    {{- partial "footer.html" . -}}
+</div>

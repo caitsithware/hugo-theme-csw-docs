@@ -1,0 +1,22 @@
+{{ define "main" }}
+{{ $pagePath := (replace (printf "/%s" .File.Path) "\\" "/") }}
+{{ if (eq .Site.Params.SearchPage $pagePath) }}
+{{- partial "search.html" . -}}
+{{ else }}
+<div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+        {{- partial "side-menu.html" . -}}
+    </div>
+    <div class="d-none d-xl-block col-xl-2 bd-toc">
+        {{ .TableOfContents }}
+    </div>
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+        {{- partial "breadcrumb.html" . -}}
+        <div id="main-content">
+            {{- partial "content.html" . -}}
+        </div>
+        {{- partial "footer.html" . -}}
+    </main>
+</div>
+{{ end }}
+{{ end }}

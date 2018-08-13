@@ -1,0 +1,8 @@
+[Search-placeholder]
+other = '検索...'
+
+[Search-matches]
+other = '<span class="q">"${query}"</span> の検索に ${resultLength} 件マッチしました:'
+
+[Search-spinner]
+other = '検索中...'

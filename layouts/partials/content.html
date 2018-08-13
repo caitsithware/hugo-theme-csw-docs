@@ -1,0 +1,7 @@
+{{- $tableClass := printf "<table class='table %s'>" ( .Site.Params.tableClass ) }}
+{{- $theadClass := printf "<thead class='%s'>" ( .Site.Params.theadClass ) }}
+{{- if .IsHome }} 
+{{ replace (replace .Site.Home.Content "<table>" $tableClass) "<thead>" $theadClass | safeHTML }}
+{{- else }}
+{{ replace (replace .Content "<table>" $tableClass) "<thead>" $theadClass | safeHTML }}
+{{- end }}

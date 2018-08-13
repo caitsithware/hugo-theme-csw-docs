@@ -1,0 +1,19 @@
+{{- $currentNode := .currentnode }}
+{{- $menuName := printf "%s" .menuName }}
+{{- with .sect}}
+<div class="nav-item ">
+    {{ if .HasChildren }}
+    {{ $isActive := or (or ($currentNode.HasMenuCurrent $menuName .) ($currentNode.IsMenuCurrent $menuName .)) (eq $currentNode.URL .URL) }}
+    <div class="dropdown dropdown-hover {{ if ne .Parent "" }}dropright{{ end }} {{ if  $isActive }}active{{ end }}">
+        <a class="nav-link dropdown-hover-toggle" href="{{ .URL }}" aria-expanded="false">{{safeHTML .Pre }}{{ .Name }}</a>
+        <div class="dropdown-menu bg-dark">
+            {{ range .Children }}
+                    {{- partial "nav-item.html" (dict "sect" . "currentnode" $currentNode "menuName" $menuName) -}}
+                {{ end }}
+            </div>
+        </div>
+    {{ else }}
+        <a class="nav-link {{ if eq $currentNode.URL .URL}}active{{ end }}" href="{{ .URL }}">{{ .Name }}</a>
+    {{ end }}
+    </div>
+{{- end }}

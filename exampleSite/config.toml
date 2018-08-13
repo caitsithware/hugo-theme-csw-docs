@@ -1,0 +1,103 @@
+baseURL = "/"
+
+languageCode = "en-US"
+DefaultContentLanguage = "en"
+#languageCode = "ja-JP"
+#DefaultContentLanguage = "ja"
+
+relativeURLs = true
+uglyURLs = true
+#canonifyURLs = true
+
+hasCJKLanguage = true
+
+title = "Arbor Documentation"
+themesDir = "../.."
+theme ="hugo-theme-csw-docs"
+
+# # 多言語がまだうまくいかない
+# [languages]
+# [languages.en]
+# baseURL = "http://example.com/en/"
+# contentDir = "content/en/"
+# languageCode = "en-US"
+# title = "Arbor Documentation"
+
+# [languages.ja]
+# baseURL = "http://example.com/ja/"
+# contentDir = "content/ja/"
+# languageCode = "ja-JP"
+# title = "Arborドキュメント"
+
+[params]
+    uglyURLs = true
+    hasSearch = true
+    searchPage = "/search.md"
+    searchLanguage = "jp"
+    titleSeparator = "|"
+    copyright = "&copy; 2018 caitsithware"
+    customStyles = [ "css/custom.css" ]
+    customScripts = [ "js/custom.js" ]
+    tableClass = "table-bordered"
+    theadClass = "thead-light"
+
+[blackfriday]
+	plainIDAnchors = true
+
+[outputs]
+home = [ "HTML" ]
+
+[[menu.main]]
+    name = "Sub"
+    identifier = "Sub"
+    parent = "Manual"
+    url = "#"
+
+[[menu.main]]
+    name = "Manual/Sub"
+    identifier = "Manual/Sub2"
+    parent = "Manual"
+    url = "#"
+
+[[menu.main]]
+    name = "Sub3"
+    identifier = "Manual/Sub3"
+    parent = "Manual/Sub2"
+    url = "#"
+
+[[menu.main]]
+    name = "Test"
+    Pre = "&#x1f34c;"
+    identifier = "Test"
+    url = "/test/test.html"
+    weight = 100
+
+[[menu.main]]
+    name = "Arbor Reference"
+    parent = "Test"
+    url = "https://arbor-docs.caitsithware.com/"
+
+[[menu.sub]]
+    name = "Site"
+    identifier = "ArborSites"
+    url = "#"
+
+[[menu.sub]]
+    name = "Offisial Site"
+    parent = "ArborSites"
+    url = "https://arbor.caitsithware.com/"
+    weight = 1
+
+[[menu.sub]]
+    name = "Forum"
+    parent = "ArborSites"
+    url = "https://forum-arbor.caitsithware.com/"
+    weight = 2
+
+[[menu.sub]]
+    name = "SubMenu1"
+    url = "#"
+
+[[menu.sub]]
+    name = "SubMenu2"
+    url = "#"

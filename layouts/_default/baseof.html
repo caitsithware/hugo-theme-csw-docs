@@ -1,0 +1,13 @@
+{{- $languageCode := ( .Site.LanguageCode | default "en-US" ) }}
+
+<!DOCTYPE html>
+<html lang="{{ $languageCode }}">
+    {{- partial "head.html" . -}}
+    <body data-url="{{ .RelPermalink }}">
+        {{- partial "header.html" . -}}
+        <div class="container-fluid">
+            {{- block "main" . }}{{- end }}
+        </div>
+        {{- partial "scripts.html" . -}}
+    </body>
+</html>

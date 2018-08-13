@@ -1,0 +1,38 @@
+{{- $currentNode := . }}
+{{ $HomeURL := (printf "%s%s" .Site.BaseURL (or (and .Site.Params.uglyURLs "index.html") "" ) ) }}
+
+<header class="navbar navbar-expand-lg navbar-dark bg-dark bd-navbar">
+    <a class="navbar-brand" href="{{ $HomeURL }}" aria-label="{{ .Site.Title }}">{{ .Site.Title }}</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav bd-navbar-nav flex-row">
+            {{- with .Site.Menus.main }}
+                {{- range sort . "Weight" }}
+                    {{- partial "nav-item.html" (dict "sect" . "currentnode" $currentNode "menuName" "main") -}}
+                {{- end -}}
+            {{- else }}
+                {{- range .Site.Home.Sections.ByWeight}}
+                    <div class="nav-item {{ if (or (.IsAncestor $currentNode) (eq .URL $currentNode.URL) ) }}active{{ end }}">
+                        <a class="nav-link" href="{{ .RelPermalink }}">{{ .Title }}</a>
+                    </div>
+                {{- end }}
+            {{- end }}
+        </div>
+        {{ with $searchPage := .Site.GetPage .Site.Params.SearchPage }}
+            <div class="navbar-nav bd-navbar-nav flex-row text-light ml-md-auto ">
+                <form class="form-inline" href="{{ $searchPage.RelPermalink | relURL }}" method="get" id="searchBox">
+                    <input class="form-control mr-sm-2" name="q" id="q" type="search" placeholder="{{ i18n "Search-placeholder" }}">
+                </form>
+            </div>
+        {{ end }}
+        <div class="navbar-nav bd-navbar-nav flex-row">
+            {{- with .Site.Menus.sub }}
+                {{- range sort . "Weight" }}
+                    {{ partial "nav-item.html" (dict "sect" . "currentnode" $currentNode "menuName" "sub") -}}
+                {{- end }}
+            {{- end }}
+        </div>
+    </div>
+</header>

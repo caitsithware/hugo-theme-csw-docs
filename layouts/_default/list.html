@@ -1,0 +1,24 @@
+{{ define "main" }}
+<div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+        {{- partial "side-menu.html" . -}}
+    </div>
+    <div class="d-none d-xl-block col-xl-2 bd-toc">
+        {{ .TableOfContents }}
+    </div>
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+        {{- partial "breadcrumb.html" . -}}
+        <div id="main-content">
+            {{if .Content}}
+                {{- partial "content.html" . -}}
+            {{else }}
+                {{ $paginator := .Paginator }}
+                {{ range $index, $page := $paginator.Pages }}
+                    {{ .Render "list/item" }}
+                {{ end }}
+            {{ end }}
+        </div>
+        {{- partial "footer.html" . -}}
+    </main>
+</div>
+{{ end }}

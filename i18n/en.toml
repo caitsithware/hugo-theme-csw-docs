@@ -1,0 +1,8 @@
+[Search-placeholder]
+other = 'Search...'
+
+[Search-matches]
+other = 'Your search for <span class="q">"${query}"</span> resulted in ${resultLength} matches:'
+
+[Search-spinner]
+other = 'Searching...'

@@ -1,0 +1,13 @@
+<figure {{- with .Get "class" }} class="{{ . }}"{{- end }}>
+    <img 
+        {{- with .Get "src" }} data-gifffer="{{ . }}"{{- end }}
+        {{- with .Get "alt" }} data-gifffer-alt="{{ . }}"{{- end }}
+        {{- with .Get "width" }} data-gifffer-width="{{ . }}"{{- end }}
+        {{- with .Get "height" }} data-gifffer-height="{{ . }}"{{- end }} />
+    {{- if or (isset .Params "title") (isset .Params "caption") }}
+    <figcaption>
+        {{- with .Get "title" }}<h4>{{ . }}</h4>{{- end }}
+        {{- with .Get "caption" }}<p>{{ . }}</p>{{- end }}
+    </figcaption>
+    {{- end }}
+</figure>    
