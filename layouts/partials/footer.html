@@ -1,3 +1,14 @@
-<footer>
-    {{safeHTML .Site.Params.copyright }}
+{{- $currentNode := . }}
+
+<footer class="navbar navbar-expand-lg navbar-light">
+    <div class="navbar-nav navbar-text flex-row">
+        {{safeHTML .Site.Params.copyright }}
+    </div>
+    <div class="navbar-nav flex-row ml-md-auto">
+        {{- with .Site.Menus.footer }}
+            {{- range sort . "Weight" }}
+                {{ partial "nav-item.html" (dict "sect" . "currentnode" $currentNode "menuName" "footer") -}}
+            {{- end }}
+        {{- end }}
+    </div>
 </footer>

@@ -101,3 +101,17 @@ home = [ "HTML" ]
 [[menu.sub]]
     name = "SubMenu2"
     url = "#"
+
+[[menu.footer]]
+    name = "Footer1-1"
+    url = "#"
+    identifier = "Footer1"
+
+[[menu.footer]]
+    name = "Footer1-2"
+    url = "#"
+    parent = "Footer1"
+
+[[menu.footer]]
+    name = "Footer2"
+    url = "#"

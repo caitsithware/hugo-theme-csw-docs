@@ -1,19 +1,27 @@
 {{- $currentNode := .currentnode }}
 {{- $menuName := printf "%s" .menuName }}
+{{- $footer := eq .menuName "footer" }}
+{{- $dropdown_dark := .dropdown_dark }}
 {{- with .sect}}
-<div class="nav-item ">
-    {{ if .HasChildren }}
+
+{{ if .HasChildren }}
     {{ $isActive := or (or ($currentNode.HasMenuCurrent $menuName .) ($currentNode.IsMenuCurrent $menuName .)) (eq $currentNode.URL .URL) }}
-    <div class="dropdown dropdown-hover {{ if ne .Parent "" }}dropright{{ end }} {{ if  $isActive }}active{{ end }}">
-        <a class="nav-link dropdown-hover-toggle" href="{{ .URL }}" aria-expanded="false">{{safeHTML .Pre }}{{ .Name }}</a>
-        <div class="dropdown-menu bg-dark">
+    <div class="{{ if ne .Parent "" }}dropdown-item-container{{ else }}nav-item{{ end }} dropdown dropdown-hover {{ if ne .Parent "" }}dropright{{ else if $footer }}dropup{{ end }} {{ if  $isActive }}active{{ end }}">
+        <a class="{{ if ne .Parent "" }}dropdown-item{{ else }}nav-link{{ end }} dropdown-hover-toggle" href="{{ .URL }}" aria-expanded="false">{{safeHTML .Pre }}{{ .Name }}</a>
+        <div class="dropdown-menu {{ if $dropdown_dark }}dropdown-dark bg-dark{{ end }}">
             {{ range .Children }}
-                    {{- partial "nav-item.html" (dict "sect" . "currentnode" $currentNode "menuName" $menuName) -}}
-                {{ end }}
-            </div>
+                {{- partial "nav-item.html" (dict "sect" . "currentnode" $currentNode "menuName" $menuName "dropdown_dark" $dropdown_dark) -}}
+            {{ end }}
         </div>
-    {{ else }}
-        <a class="nav-link {{ if eq $currentNode.URL .URL}}active{{ end }}" href="{{ .URL }}">{{ .Name }}</a>
-    {{ end }}
     </div>
+{{ else }}
+    {{ if ne .Parent "" }}
+        <a class="{{ if ne .Parent "" }}dropdown-item{{ else }}nav-link{{ end }} {{ if eq $currentNode.URL .URL}}active{{ end }}" href="{{ .URL }}">{{ .Name }}</a>
+    {{ else }}
+        <div class="nav-item">
+                <a class="nav-link {{ if eq $currentNode.URL .URL}}active{{ end }}" href="{{ .URL }}">{{ .Name }}</a>
+        </div>
+    {{ end }}
+{{ end }}
+
 {{- end }}

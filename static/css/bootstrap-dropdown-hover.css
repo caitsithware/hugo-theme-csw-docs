@@ -42,11 +42,11 @@
 
 .dropdown.dropdown-hover.dropright .dropdown-hover-toggle::after {
     position: absolute;
-    top: 50%;
     right: 0.5em;
     display: inline-block;
     width: 0;
     height: 0;
+    margin-top: .5em;
     margin-left: .255em;
     vertical-align: .255em;
     content: "";
@@ -95,4 +95,23 @@
 
 .dropdown.dropdown-hover.dropleft .dropdown-hover-toggle::before {
     vertical-align: 0;
+}
+
+.dropdown-dark > .dropdown-item, 
+.dropdown-dark > .dropdown-item-container > .dropdown-item {
+    color: rgba(255,255,255,.5);
+}
+
+.dropdown-dark > .dropdown-item:focus,
+.dropdown-dark > .dropdown-item-container > .dropdown-item:focus,
+.dropdown-dark > .dropdown-item:hover,
+.dropdown-dark > .dropdown-item-container > .dropdown-item:hover {
+    color: rgba(255,255,255,.7);
+    background-color: inherit;
+}
+
+.dropdown-dark > .dropdown-item.active, .dropdown-dark > .dropdown-item:active,
+.dropdown-dark > .dropdown-item-container > .dropdown-item.active, .dropdown-dark > .dropdown-item-container > .dropdown-item:active {
+    background-color: inherit;
+    color: white;
 }

@@ -10,7 +10,7 @@
         <div class="navbar-nav bd-navbar-nav flex-row">
             {{- with .Site.Menus.main }}
                 {{- range sort . "Weight" }}
-                    {{- partial "nav-item.html" (dict "sect" . "currentnode" $currentNode "menuName" "main") -}}
+                    {{- partial "nav-item.html" (dict "sect" . "currentnode" $currentNode "menuName" "main" "dropdown_dark" true) -}}
                 {{- end -}}
             {{- else }}
                 {{- range .Site.Home.Sections.ByWeight}}
@@ -30,7 +30,7 @@
         <div class="navbar-nav bd-navbar-nav flex-row">
             {{- with .Site.Menus.sub }}
                 {{- range sort . "Weight" }}
-                    {{ partial "nav-item.html" (dict "sect" . "currentnode" $currentNode "menuName" "sub") -}}
+                    {{ partial "nav-item.html" (dict "sect" . "currentnode" $currentNode "menuName" "sub" "dropdown_dark" true) -}}
                 {{- end }}
             {{- end }}
         </div>
