@@ -257,3 +257,16 @@ div#search-results div.result p {
 [data-anchorjs-icon]::after {
     content: attr(data-anchorjs-icon);
 }
+
+header .search-form button[type="submit"] {
+    background-color: white;
+    border: 1px solid #ced4da;
+    border-left: 0;
+}
+
+.search-form .search-icon {
+    background: url(../images/sprites.png) 0 0 no-repeat;
+    background-position: -50px -3px;
+    width: 17px;
+    height: 15px;
+}

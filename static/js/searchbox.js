@@ -5,6 +5,6 @@ $(function() {
         searchForm.removeAttr("href");
     }
 
-    var queryInput = searchForm.children("#q");
+    var queryInput = $("#q");
     queryInput.val($.queryParameter("q"));
 });

@@ -22,9 +22,16 @@
         </div>
         {{ with $searchPage := .Site.GetPage .Site.Params.SearchPage }}
             <div class="navbar-nav bd-navbar-nav flex-row text-light ml-md-auto ">
-                <form class="form-inline" href="{{ $searchPage.RelPermalink | relURL }}" method="get" id="searchBox">
-                    <input class="form-control mr-sm-2" name="q" id="q" type="search" placeholder="{{ i18n "Search-placeholder" }}">
-                </form>
+                <div class="search-form">
+                    <form class="form-inline" href="{{ $searchPage.RelPermalink | relURL }}" method="get" id="searchBox">
+                        <div class="input-group">
+                            <input class="form-control" name="q" id="q" type="search" placeholder="{{ i18n "Search-placeholder" }}">
+                            <div class="input-group-append">
+                                <button type="submit" class="btn"><div class="search-icon"></div></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         {{ end }}
         <div class="navbar-nav bd-navbar-nav flex-row">
