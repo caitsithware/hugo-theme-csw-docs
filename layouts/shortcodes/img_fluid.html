@@ -1,0 +1,15 @@
+<figure {{- with .Get "class" }} class="{{ . }}"{{- end }}>
+    <img 
+        {{- with .Get "src" }} src="{{ . }}"{{- end }}
+        {{- with .Get "alt" }} alt="{{ . }}"{{- end }}
+        {{- with .Get "width" }} width="{{ . }}"{{- end }}
+        {{- with .Get "height" }} height="{{ . }}"{{- end }} 
+        class="img-fluid {{- with .Get "img_class" }} {{ . }}{{- end }}"
+        />
+    {{- if or (isset .Params "title") (isset .Params "caption") }}
+    <figcaption>
+        {{- with .Get "title" }}<h4>{{ . }}</h4>{{- end }}
+        {{- with .Get "caption" }}<p>{{ . }}</p>{{- end }}
+    </figcaption>
+    {{- end }}
+</figure>    
