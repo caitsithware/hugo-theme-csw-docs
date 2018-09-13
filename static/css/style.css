@@ -270,3 +270,11 @@ header .search-form button[type="submit"] {
     width: 17px;
     height: 15px;
 }
+
+.highlight {
+    margin-bottom: 1rem;
+}
+
+.highlight pre {
+    margin-bottom: 0;
+}
