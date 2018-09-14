@@ -293,3 +293,16 @@ header .search-form button[type="submit"] {
 button.gifffer-fluid:focus {
     outline: none;
 }
+
+.gifffer-play-button {
+    border: 5px solid white;
+    border-radius: 35px !important;
+    background-color: rgba(0,0,0,.9) !important;
+    width: 70px !important;
+    height: 70px !important;
+}
+
+.gifffer-play-button > div {
+    border-left: 24px solid white !important;
+    left: 20px !important;
+}
