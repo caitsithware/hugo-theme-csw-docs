@@ -278,3 +278,14 @@ header .search-form button[type="submit"] {
 .highlight pre {
     margin-bottom: 0;
 }
+
+.gifffer-fluid {
+    width: inherit !important;
+    height: inherit !important;
+}
+
+.gifffer-fluid > canvas {
+    max-width: 100% !important;
+    width: inherit !important;
+    height: auto !important;
+}
