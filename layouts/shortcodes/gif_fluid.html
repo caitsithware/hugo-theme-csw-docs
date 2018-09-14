@@ -4,8 +4,8 @@
         {{- with .Get "alt" }} data-gifffer-alt="{{ . }}"{{- end }}
         {{- with .Get "width" }} data-gifffer-width="{{ . }}"{{- end }}
         {{- with .Get "height" }} data-gifffer-height="{{ . }}"{{- end }} 
-        {{- with .Get "fluid" }} data-gifffer-fluid="{{ . }}"{{- end }}
         {{- with .Get "img-class" }} class="{{ . }}"{{- end }} 
+        data-gifffer-fluid="true"
         />
     {{- if or (isset .Params "title") (isset .Params "caption") }}
     <figcaption>
