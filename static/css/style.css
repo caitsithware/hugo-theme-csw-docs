@@ -289,3 +289,7 @@ header .search-form button[type="submit"] {
     width: inherit !important;
     height: auto !important;
 }
+
+button.gifffer-fluid:focus {
+    outline: none;
+}
