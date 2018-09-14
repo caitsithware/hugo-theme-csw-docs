@@ -7,6 +7,33 @@
 
 #main-content {
     padding-top: 15px;
+    font-size: 0.875em;
+}
+
+#main-content h1,
+#main-content h2,
+#main-content h3,
+#main-content h4,
+#main-content h5,
+#main-content h6 {
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+#main-content p {
+    margin-bottom: 0.8rem;
+}
+
+#main-content ol li, #main-content ul li{
+    padding-bottom: 0.25rem;
+}
+
+#main-content .table {
+    width: auto;
+}
+
+#main-content .table td, #main-content .table th {
+    padding: 5px 10px;
 }
 
 footer {
