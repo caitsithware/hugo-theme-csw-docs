@@ -41,17 +41,17 @@
     margin-bottom: 1rem;
 }
 
-#main-content section h1 div {
+#main-content section h1 {
     border-bottom: 4px solid #88CCAA;
 }
 
-#main-content section h2 div {
+#main-content section h2 {
     position: relative;
     padding-bottom: 0.2em;
     border-bottom: 4px solid #DDD;
 }
 
-#main-content section h2 div:after {
+#main-content section h2:after {
     position: absolute;
     content: '';
     border-bottom: 4px solid #88CCAA;
@@ -60,13 +60,13 @@
     display: block;
 }
 
-#main-content section h3 div {
+#main-content section h3 {
     position: relative;
     padding-bottom: 0.2em;
     border-bottom: 2px solid #DDD;
 }
 
-#main-content section h3 div:after {
+#main-content section h3:after {
     position: absolute;
     content: '';
     border-bottom: 2px solid #88CCAA;
@@ -75,13 +75,13 @@
     display: block;
 }
 
-#main-content section h4 div {
+#main-content section h4 {
     position: relative;
     padding-bottom: 0.2em;
     border-bottom: 1px solid #DDD;
 }
 
-#main-content section h4 div:after {
+#main-content section h4:after {
     position: absolute;
     content: '';
     border-bottom: 1px solid #88CCAA;
@@ -90,7 +90,7 @@
     display: block;
 }
 
-#main-content section h5 div {
+#main-content section h5 {
     padding-bottom: 0.2em;
     border-bottom: 1px solid #DDD;
 }
