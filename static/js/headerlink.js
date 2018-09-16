@@ -8,7 +8,6 @@ $(function() {
             var anchor = $("<a>");
             anchor.addClass("header-link");
             anchor.attr("href","#"+elem.attr("id"));
-            anchor.attr("data-anchorjs-icon","#");
             div.append(anchor);
             elem.empty().append( div );
         });

@@ -43,6 +43,7 @@ theme ="hugo-theme-csw-docs"
 
 [blackfriday]
 	plainIDAnchors = true
+    hrefTargetBlank = true
 
 [outputs]
 home = [ "HTML" ]

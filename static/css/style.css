@@ -364,8 +364,11 @@ div#search-results div.result p {
     opacity: 1;
 }
 
-[data-anchorjs-icon]::after {
-    content: attr(data-anchorjs-icon);
+.header-link::after {
+    font-family: 'icomoon' !important;
+    vertical-align: middle;
+    content: "\e901";
+    font-size: 0.8em;
 }
 
 header .search-form button[type="submit"] {
@@ -415,4 +418,10 @@ button.gifffer-fluid:focus {
 .gifffer-play-button > div {
     border-left: 24px solid white !important;
     left: 20px !important;
+}
+
+a[href^="http://"]::after, a[href^="https://"]::after {
+    font-family: 'icomoon' !important;
+    content: "\e900";
+    font-size: 0.8em;
 }

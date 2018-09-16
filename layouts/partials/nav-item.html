@@ -2,12 +2,15 @@
 {{- $menuName := printf "%s" .menuName }}
 {{- $footer := eq .menuName "footer" }}
 {{- $dropdown_dark := .dropdown_dark }}
+{{ $baseurlInfo := urls.Parse $.Site.Params.Baseurl }}
 {{- with .sect}}
+{{ $url := .URL }}
+{{ $urlInfo := urls.Parse $url }}
 
 {{ if .HasChildren }}
     {{ $isActive := or (or ($currentNode.HasMenuCurrent $menuName .) ($currentNode.IsMenuCurrent $menuName .)) (eq $currentNode.URL .URL) }}
     <div class="{{ if ne .Parent "" }}dropdown-item-container{{ else }}nav-item{{ end }} dropdown dropdown-hover {{ if ne .Parent "" }}dropright{{ else if $footer }}dropup{{ end }} {{ if  $isActive }}active{{ end }}">
-        <a class="{{ if ne .Parent "" }}dropdown-item{{ else }}nav-link{{ end }} dropdown-hover-toggle" href="{{ .URL }}" aria-expanded="false">{{safeHTML .Pre }}{{ .Name }}</a>
+        <a class="{{ if ne .Parent "" }}dropdown-item{{ else }}nav-link{{ end }} dropdown-hover-toggle" href="{{ $url }}" {{ if ne $urlInfo.Host $baseurlInfo.Host }}target="_blank" rel="noopener"{{ end }} aria-expanded="false">{{safeHTML .Pre }}{{ .Name }}</a>
         <div class="dropdown-menu {{ if $dropdown_dark }}dropdown-dark bg-dark{{ end }}">
             {{ range .Children }}
                 {{- partial "nav-item.html" (dict "sect" . "currentnode" $currentNode "menuName" $menuName "dropdown_dark" $dropdown_dark) -}}
@@ -16,10 +19,10 @@
     </div>
 {{ else }}
     {{ if ne .Parent "" }}
-        <a class="{{ if ne .Parent "" }}dropdown-item{{ else }}nav-link{{ end }} {{ if eq $currentNode.URL .URL}}active{{ end }}" href="{{ .URL }}">{{ .Name }}</a>
+        <a class="{{ if ne .Parent "" }}dropdown-item{{ else }}nav-link{{ end }} {{ if eq $currentNode.URL .URL}}active{{ end }}" href="{{ $url }}" {{ if ne $urlInfo.Host $baseurlInfo.Host }}target="_blank" rel="noopener"{{ end }}>{{ .Name }}</a>
     {{ else }}
         <div class="nav-item">
-                <a class="nav-link {{ if eq $currentNode.URL .URL}}active{{ end }}" href="{{ .URL }}">{{ .Name }}</a>
+                <a class="nav-link {{ if eq $currentNode.URL $url }}active{{ end }}" href="{{ $url }}" {{ if ne $urlInfo.Host $baseurlInfo.Host }}target="_blank" rel="noopener"{{ end }}>{{ .Name }}</a>
         </div>
     {{ end }}
 {{ end }}

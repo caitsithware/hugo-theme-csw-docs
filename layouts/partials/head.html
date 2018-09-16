@@ -3,6 +3,7 @@
     <title>{{ if not .IsHome }}{{ .Title }} {{ with .Site.Params.TitleSeparator }}{{ . }}{{ else }}|{{ end }} {{ end }}{{ .Site.Title }}</title>
     <link rel="stylesheet" href="{{ "css/bootstrap.min.css" | relURL }}">
     <link rel="stylesheet" href="{{ "css/bootstrap-dropdown-hover.css" | relURL }}">
+    <link rel="stylesheet" href="{{ "css/icomoon/style.css" | relURL }}">
     <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
     {{ range .Site.Params.CustomStyles }}
     <link rel="stylesheet" href="{{ . | relURL }}">
