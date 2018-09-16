@@ -329,12 +329,20 @@ div#search-results div.result p {
     font-size: 0.875em;
 }
 
-#main-content h1[id]::before,#main-content h2[id]::before,#main-content h3[id]::before,#main-content h4[id]::before {
+.header-link-target {
+    pointer-events: none;
+}
+
+.header-link-target::before {
     display: block;
     height: 6rem;
     margin-top: -6rem;
     visibility: hidden;
-    content: ""
+    content: "";
+}
+
+.header-link-target > div {
+    pointer-events: auto;
 }
 
 .header-link {
