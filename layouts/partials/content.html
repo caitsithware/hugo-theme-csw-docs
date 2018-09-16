@@ -1,7 +1,17 @@
 {{- $tableClass := printf "<table class='table %s'>" ( .Site.Params.tableClass ) }}
 {{- $theadClass := printf "<thead class='%s'>" ( .Site.Params.theadClass ) }}
-{{- if .IsHome }} 
+{{- if .IsHome }}
+<header>
+<h1 class="bd-title">{{ .Site.Title }}</h1>
+</header>
+<section>
 {{ replace (replace .Site.Home.Content "<table>" $tableClass) "<thead>" $theadClass | safeHTML }}
+</section>
 {{- else }}
+<header>
+<h1 class="bd-title">{{ .Page.Title }}</h1>
+</header>
+<section>
 {{ replace (replace .Content "<table>" $tableClass) "<thead>" $theadClass | safeHTML }}
+</section>
 {{- end }}
