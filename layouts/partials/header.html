@@ -14,7 +14,7 @@
                 {{- end -}}
             {{- else }}
                 {{- range .Site.Home.Sections.ByWeight}}
-                    <div class="nav-item {{ if (or (.IsAncestor $currentNode) (eq .URL $currentNode.URL) ) }}active{{ end }}">
+                    <div class="nav-item {{ if (or (.IsAncestor $currentNode) (eq .RelPermalink $currentNode.RelPermalink) ) }}active{{ end }}">
                         <a class="nav-link" href="{{ .RelPermalink }}">{{ .Title }}</a>
                     </div>
                 {{- end }}

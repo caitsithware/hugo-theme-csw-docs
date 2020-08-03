@@ -14,7 +14,7 @@
 {{- if and .IsSection (or (not .Params.hidden) $.showhidden)}}
     {{- $numberOfPages := (add (len .Pages) (len .Sections)) }}
     {{- safeHTML .Params.head}}
-    {{- $isActive := (eq .URL $currentNode.URL) }}
+    {{- $isActive := (eq .RelPermalink $currentNode.RelPermalink) }}
     {{- $isExpanded := (or (.IsAncestor $currentNode) $isActive ) }}
     <li class="bd-toc-item">
         <button class="arrow" type="button" data-target="#toc_{{ .File.UniqueID }}" data-toggle="collapse" aria-expanded="{{ $isExpanded }}" area-controls="toc_{{ .File.UniqueID }}"></button>
@@ -34,9 +34,9 @@
                 {{- if .IsSection }}
                     {{- template "section-tree-nav" dict "sect" . "currentnode" $currentNode }}
                 {{- else }}
-                <li class="bd-toc-item {{ if eq .URL $currentNode.URL}} active bd-sidenav-active{{end}}">
+                <li class="bd-toc-item {{ if eq .RelPermalink $currentNode.RelPermalink}} active bd-sidenav-active{{end}}">
                     <div class="leafnode"></div>
-                    <a class="{{- if eq .URL $currentNode.URL}}active{{end}}" href="{{ .RelPermalink }}">
+                    <a class="{{- if eq .RelPermalink $currentNode.RelPermalink}}active{{end}}" href="{{ .RelPermalink }}">
                         {{safeHTML .Params.Pre}}{{.Title}}{{safeHTML .Params.Post}}
                     </a>
                 </li>
@@ -50,7 +50,7 @@
     {{- if not .Params.Hidden }}
     <li class="bd-toc-item">
         <div class="leafnode"></div>
-        <a class="bd-toc-link {{- if eq .URL $currentNode.URL}} active{{end}}" href="{{ .RelPermalink }}">
+        <a class="bd-toc-link {{- if eq .RelPermalink $currentNode.RelPermalink}} active{{end}}" href="{{ .RelPermalink }}">
             {{safeHTML .Params.Pre}}{{.LinkTitle}}{{safeHTML .Params.Post}}
         </a>
     </li>
