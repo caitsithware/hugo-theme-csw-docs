@@ -44,7 +44,7 @@ $(function() {
         for(i in results) {
             var result = results[i];
             html += '<div class="result">';
-            html += '<a href="' + result.uri + '" class="title">' + result.title + '</a>';
+            html += '<a href=".' + result.uri + '" class="title">' + result.title + '</a>';
             var description = (result.description.length > 130)? result.description.slice(0,127) + '...' : result.description;
             if(!description) {
                 description = (result.summary.length > 130)? result.summary.slice(0,127) + '...' : result.summary;
