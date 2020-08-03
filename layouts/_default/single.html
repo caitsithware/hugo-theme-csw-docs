@@ -1,5 +1,8 @@
 {{ define "main" }}
-{{ $pagePath := (replace (printf "/%s" .File.Path) "\\" "/") }}
+{{ $pagePath := "" }}
+{{ with .File }}
+{{ $pagePath = (replace (printf "/%s" .Path) "\\" "/") }}
+{{ end }}
 {{ if (eq .Site.Params.SearchPage $pagePath) }}
 {{- partial "search.html" . -}}
 {{ else }}

@@ -14,7 +14,10 @@ $(function() {
 {{- with $searchPage := .Site.GetPage .Site.Params.SearchPage }}
 <script src="{{ "/js/searchbox.js" | relURL }}"></script>
 {{- end }}
-{{- $pagePath := (replace (printf "/%s" .File.Path) "\\" "/") }}
+{{- $pagePath := "" }}
+{{- with .File }}
+{{- $pagePath = (replace (printf "/%s" .Path) "\\" "/") }}
+{{- end }}
 {{- if (eq .Site.Params.SearchPage $pagePath) }}
 {{- partial "search_scripts.html" . -}}
 {{- end }}

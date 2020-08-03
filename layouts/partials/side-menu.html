@@ -17,7 +17,7 @@
     {{- $isActive := (eq .URL $currentNode.URL) }}
     {{- $isExpanded := (or (.IsAncestor $currentNode) $isActive ) }}
     <li class="bd-toc-item">
-        <button class="arrow" type="button" data-target="#toc_{{ .UniqueID }}" data-toggle="collapse" aria-expanded="{{ $isExpanded }}" area-controls="toc_{{ .UniqueID }}"></button>
+        <button class="arrow" type="button" data-target="#toc_{{ .File.UniqueID }}" data-toggle="collapse" aria-expanded="{{ $isExpanded }}" area-controls="toc_{{ .File.UniqueID }}"></button>
         <a class="bd-toc-link {{- if $isActive }} active{{end}}" href="{{ .RelPermalink }}">
             {{safeHTML .Params.Pre}}{{.Title}}{{safeHTML .Params.Post}}            
         </a>
@@ -27,7 +27,7 @@
             {{- .Scratch.Set "pages" (.Pages | union .Sections) }}
         {{- end}}
         {{- $pages := (.Scratch.Get "pages") }}
-        <ul class="nav bd-sidenav collapse {{ if $isExpanded }}show{{ end }}" id="toc_{{ .UniqueID }}">
+        <ul class="nav bd-sidenav collapse {{ if $isExpanded }}show{{ end }}" id="toc_{{ .File.UniqueID }}">
                 {{- range $pages.ByWeight }}
                 {{- if and .Params.hidden (not $.showhidden) }}
                 {{- else}}
