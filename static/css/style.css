@@ -425,3 +425,50 @@ a[href^="http://"]::after, a[href^="https://"]::after {
     content: "\e900";
     font-size: 0.8em;
 }
+
+table {
+	border: 1px solid #e1e4e5;
+	border-collapse: collapse;
+	border-spacing: 0;
+	empty-cells: show;
+	margin-bottom: 24px;
+}
+
+table thead {
+	color: #000;
+	text-align: left;
+    vertical-align: bottom;
+    white-space: nowrap;
+}
+
+table thead th {
+	font-weight: bold;
+	border-bottom: solid 2px #e1e4e5;
+}
+
+table th {
+	margin: 0;
+	overflow: visible;
+	padding: 8px 16px;
+}
+
+table th:first-child, table td:first-child {
+	border-left-width: 0;
+}
+
+table td {
+	border-bottom: 1px solid #e1e4e5;
+	border-left: 1px solid #e1e4e5;
+	vertical-align: middle;
+	margin: 0;
+	overflow: visible;
+	padding: 8px 16px;
+}
+
+table:not(.field-list) > tbody > tr:nth-child(2n-1) > td {
+	background-color: #f3f6f6 !important;
+}
+
+table:not(.field-list) > tbody > tr:nth-child(2n) > td {
+	background-color: #fcfcfc !important;
+}
