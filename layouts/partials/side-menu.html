@@ -1,64 +1,64 @@
 {{- $currentNode := . }}
 <ul class="nav bd-links" id="side-nav">
-{{- range .Site.Home.Sections.ByWeight}}
-{{/* Check the section containing the current page */}}
-{{- if (or (.IsDescendant $currentNode) (.IsAncestor $currentNode) )}}
-{{- template "section-tree-nav" dict "sect" . "currentnode" $currentNode }}
-{{- end }}
-{{- end}}
+    {{- range .Site.Home.Sections.ByWeight}}
+        {{/* Check the section containing the current page */}}
+        {{- if (or (.IsDescendant $currentNode) (.IsAncestor $currentNode) )}}
+            {{- template "section-tree-nav" dict "sect" . "currentnode" $currentNode }}
+        {{- end }}
+    {{- end}}
 </ul>
 
 {{- define "section-tree-nav" }}
-{{- $currentNode := .currentnode }}
-{{- with .sect}}
-{{- if and .IsSection (or (not .Params.hidden) $.showhidden)}}
-    {{- $numberOfPages := (add (len .Pages) (len .Sections)) }}
-    {{- safeHTML .Params.head}}
-    {{- $isActive := (eq .RelPermalink $currentNode.RelPermalink) }}
-    {{- $isExpanded := (or (.IsAncestor $currentNode) $isActive ) }}
-    <li class="bd-toc-item">
-        {{- if ne $numberOfPages 0 }}
-            <div class="arrow" data-target="#toc_{{ with .File }}{{ .UniqueID }}{{ end }}" data-toggle="collapse" aria-expanded="{{ $isExpanded }}" area-controls="toc_{{ with .File }}{{ .UniqueID }}{{ end }}"></div>
-        {{- else }}
-            <div class="leafnode"></div>
-        {{- end }}
-        <a class="bd-toc-link {{- if $isActive }} active{{end}}" href="{{ .RelPermalink }}">
-            {{safeHTML .Params.Pre}}{{.Title}}{{safeHTML .Params.Post}}            
-        </a>
-        {{- if ne $numberOfPages 0 }}
-        {{- .Scratch.Set "pages" .Pages }}
-        {{- if .Sections}}
-            {{- .Scratch.Set "pages" (.Pages | union .Sections) }}
-        {{- end}}
-        {{- $pages := (.Scratch.Get "pages") }}
-        <ul class="nav bd-sidenav collapse {{ if $isExpanded }}show{{ end }}" id="toc_{{ with .File }}{{ .UniqueID }}{{ end }}">
-                {{- range $pages.ByWeight }}
-                {{- if and .Params.hidden (not $.showhidden) }}
-                {{- else}}
-                {{- if .IsSection }}
-                    {{- template "section-tree-nav" dict "sect" . "currentnode" $currentNode }}
+    {{- $currentNode := .currentnode }}
+    {{- with .sect}}
+        {{- if and .IsSection (or (not .Params.hidden) $.showhidden)}}
+            {{- $numberOfPages := (add (len .Pages) (len .Sections)) }}
+            {{- safeHTML .Params.head}}
+            {{- $isActive := (eq .RelPermalink $currentNode.RelPermalink) }}
+            {{- $isExpanded := (or (.IsAncestor $currentNode) $isActive ) }}
+            <li class="bd-toc-item">
+                {{- if ne $numberOfPages 0 }}
+                    <div class="arrow" data-target="#toc_{{ with .File }}{{ .UniqueID }}{{ end }}" data-toggle="collapse" aria-expanded="{{ $isExpanded }}" area-controls="toc_{{ with .File }}{{ .UniqueID }}{{ end }}"></div>
                 {{- else }}
-                <li class="bd-toc-item {{ if eq .RelPermalink $currentNode.RelPermalink}} active bd-sidenav-active{{end}}">
                     <div class="leafnode"></div>
-                    <a class="{{- if eq .RelPermalink $currentNode.RelPermalink}}active{{end}}" href="{{ .RelPermalink }}">
-                        {{safeHTML .Params.Pre}}{{.Title}}{{safeHTML .Params.Post}}
+                {{- end }}
+                <a class="bd-toc-link {{- if $isActive }} active{{end}}" href="{{ .RelPermalink }}">
+                    {{safeHTML .Params.Pre}}{{.Title}}{{safeHTML .Params.Post}}            
+                </a>
+                {{- if ne $numberOfPages 0 }}
+                    {{- .Scratch.Set "pages" .Pages }}
+                    {{- if .Sections}}
+                        {{- .Scratch.Set "pages" (.Pages | union .Sections) }}
+                    {{- end}}
+                    {{- $pages := (.Scratch.Get "pages") }}
+                    <ul class="nav bd-sidenav collapse {{ if $isExpanded }}show{{ end }}" id="toc_{{ with .File }}{{ .UniqueID }}{{ end }}">
+                        {{- range $pages.ByWeight }}
+                            {{- if and .Params.hidden (not $.showhidden) }}
+                            {{- else}}
+                                {{- if .IsSection }}
+                                    {{- template "section-tree-nav" dict "sect" . "currentnode" $currentNode }}
+                                {{- else }}
+                                    <li class="bd-toc-item {{ if eq .RelPermalink $currentNode.RelPermalink}} active bd-sidenav-active{{end}}">
+                                        <div class="leafnode"></div>
+                                        <a class="{{- if eq .RelPermalink $currentNode.RelPermalink}}active{{end}}" href="{{ .RelPermalink }}">
+                                            {{safeHTML .Params.Pre}}{{.Title}}{{safeHTML .Params.Post}}
+                                        </a>
+                                    </li>
+                                {{- end}}
+                            {{- end}}
+                        {{- end}}
+                    </ul>
+                {{- end }}
+            </li>
+        {{- else}}
+            {{- if not .Params.Hidden }}
+                <li class="bd-toc-item">
+                    <div class="leafnode"></div>
+                    <a class="bd-toc-link {{- if eq .RelPermalink $currentNode.RelPermalink}} active{{end}}" href="{{ .RelPermalink }}">
+                        {{safeHTML .Params.Pre}}{{.LinkTitle}}{{safeHTML .Params.Post}}
                     </a>
                 </li>
-                {{- end}}
-                {{- end}}
             {{- end}}
-        </ul>
+        {{- end}}
     {{- end }}
-    </li>
-{{- else}}
-    {{- if not .Params.Hidden }}
-    <li class="bd-toc-item">
-        <div class="leafnode"></div>
-        <a class="bd-toc-link {{- if eq .RelPermalink $currentNode.RelPermalink}} active{{end}}" href="{{ .RelPermalink }}">
-            {{safeHTML .Params.Pre}}{{.LinkTitle}}{{safeHTML .Params.Post}}
-        </a>
-    </li>
-    {{- end}}
-{{- end}}
-{{- end }}
 {{- end }}
