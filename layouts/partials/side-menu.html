@@ -17,7 +17,11 @@
     {{- $isActive := (eq .RelPermalink $currentNode.RelPermalink) }}
     {{- $isExpanded := (or (.IsAncestor $currentNode) $isActive ) }}
     <li class="bd-toc-item">
-        <div class="arrow" data-target="#toc_{{ with .File }}{{ .UniqueID }}{{ end }}" data-toggle="collapse" aria-expanded="{{ $isExpanded }}" area-controls="toc_{{ with .File }}{{ .UniqueID }}{{ end }}"></div>
+        {{- if ne $numberOfPages 0 }}
+            <div class="arrow" data-target="#toc_{{ with .File }}{{ .UniqueID }}{{ end }}" data-toggle="collapse" aria-expanded="{{ $isExpanded }}" area-controls="toc_{{ with .File }}{{ .UniqueID }}{{ end }}"></div>
+        {{- else }}
+            <div class="leafnode"></div>
+        {{- end }}
         <a class="bd-toc-link {{- if $isActive }} active{{end}}" href="{{ .RelPermalink }}">
             {{safeHTML .Params.Pre}}{{.Title}}{{safeHTML .Params.Post}}            
         </a>
