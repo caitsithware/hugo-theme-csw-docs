@@ -11,10 +11,10 @@
 {{- define "section-tree-nav" }}
     {{- $currentNode := .currentnode }}
     {{- with .sect}}
-        {{- if and .IsSection (or (not .Params.hidden) $.showhidden)}}
+        {{- $isActive := (eq .RelPermalink $currentNode.RelPermalink) }}
+        {{- if and .IsSection (and (or (not .Params.hidden) $.showhidden) (not .Params.hiddenChildren)) }}
             {{- $numberOfPages := (add (len .Pages) (len .Sections)) }}
             {{- safeHTML .Params.head}}
-            {{- $isActive := (eq .RelPermalink $currentNode.RelPermalink) }}
             {{- $isExpanded := (or (.IsAncestor $currentNode) $isActive ) }}
             <li class="bd-toc-item">
                 {{- if ne $numberOfPages 0 }}
@@ -54,7 +54,7 @@
             {{- if not .Params.Hidden }}
                 <li class="bd-toc-item">
                     <div class="leafnode"></div>
-                    <a class="bd-toc-link {{- if eq .RelPermalink $currentNode.RelPermalink}} active{{end}}" href="{{ .RelPermalink }}">
+                    <a class="bd-toc-link {{- if (or $isActive (and (and .IsSection .Params.hiddenChildren) (.IsAncestor $currentNode)))}} active{{end}}" href="{{ .RelPermalink }}">
                         {{safeHTML .Params.Pre}}{{.LinkTitle}}{{safeHTML .Params.Post}}
                     </a>
                 </li>
