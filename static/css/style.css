@@ -193,7 +193,7 @@ footer {
 }
 
 .bd-sidenav {
-    display: block
+    display: block !important;
 }
 
 .bd-sidebar .bd-sidenav {
