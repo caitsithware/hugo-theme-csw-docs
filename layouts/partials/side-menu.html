@@ -1,5 +1,5 @@
 {{- $currentNode := . }}
-<ul class="nav bd-sidenav bd-links" id="side-nav">
+<ul class="nav bd-nav bd-links" id="side-nav">
     {{- range .Site.Home.Sections.ByWeight}}
         {{/* Check the section containing the current page */}}
         {{- if (and (not .Params.hidden) (or (.IsDescendant $currentNode) (.IsAncestor $currentNode) ))}}

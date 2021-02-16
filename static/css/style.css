@@ -185,6 +185,10 @@ footer {
     }
 }
 
+.bd-nav {
+    display: block !important;
+}
+
 .bd-links {
     padding-top: 1rem;
     padding-bottom: 1rem;
@@ -193,7 +197,7 @@ footer {
 }
 
 .bd-sidenav {
-    display: block !important;
+    display: block;
 }
 
 .bd-sidebar .bd-sidenav {
