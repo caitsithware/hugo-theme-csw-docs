@@ -117,7 +117,7 @@ footer {
 }
 
 .bd-navbar {
-    min-height: 4rem;
+    min-height: 5rem;
     box-shadow: 0 .5rem 1rem rgba(0,0,0,.05),inset 0 -1px 0 rgba(0,0,0,.1);
 }
 
@@ -171,8 +171,8 @@ footer {
         .bd-sidebar {
             position:-webkit-sticky;
             position: sticky;
-            top: 4rem;
-            height: calc(100vh - 4rem)
+            top: 5rem;
+            height: calc(100vh - 5rem)
         }
     }
 }
@@ -278,8 +278,8 @@ footer {
     .bd-toc {
         position:-webkit-sticky;
         position: sticky;
-        top: 4rem;
-        height: calc(100vh - 4rem);
+        top: 5rem;
+        height: calc(100vh - 5rem);
         overflow-y: auto
     }
 }
