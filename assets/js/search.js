@@ -30,7 +30,7 @@ $(function() {
         this.pipeline.remove(this.stemmer)
     });
 
-    var results = lunrIndex.search(query).map(function(result) {
+    var results = lunrIndex.search(`*${query}*`).map(function(result) {
         return searchIndex.filter(function(page) {
             return page.uri === result.ref;
         })[0];
