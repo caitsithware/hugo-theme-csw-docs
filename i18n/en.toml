@@ -6,3 +6,6 @@ other = 'Your search for <span class="q">"${query}"</span> resulted in ${resultL
 
 [Search-spinner]
 other = 'Searching...'
+
+[Search-not-matches]
+other = 'Your search for <span class="q">"${query}"</span> did not result in any matches. Please try again with a wider search'

@@ -6,3 +6,6 @@ other = '<span class="q">"${query}"</span> の検索に ${resultLength} 件マ�
 
 [Search-spinner]
 other = '検索中...'
+
+[Search-not-matches]
+other = '<span class="q">"${query}"</span> の検索では、マッチするものがありませんでした。検索範囲を広げて再度お試しください。'

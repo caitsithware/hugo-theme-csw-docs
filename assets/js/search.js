@@ -54,7 +54,7 @@ $(function() {
 
         $('#search-results').html(html);
     } else {
-        $('#search-results').html('Your search for "<b class="q">'+query+"</b> did not result in any matches. Please try again with a wider search");
+        $('#search-results').html(`{{ i18n "Search-not-matches" }}`);
     }
     $('.search-spinner').css("display","none");
 });
