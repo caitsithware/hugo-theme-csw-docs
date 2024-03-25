@@ -13,6 +13,9 @@
 
     {{- if eq .node .current }}
         <li class="breadcrumb-item active" aria-current="page">{{ .node.LinkTitle }}</li>
+    {{- else if .node.IsHome }}
+        {{ $HomeURL := (printf "%s%s" .node.Site.BaseURL (or (and .node.Site.Params.uglyURLs "index.html") "" ) ) }}
+        <li class="breadcrumb-item"><a href="{{ $HomeURL }}">{{ .node.LinkTitle }} </a></li>
     {{- else }}
         <li class="breadcrumb-item"><a href="{{ .node.Permalink }}">{{ .node.LinkTitle }} </a></li>
     {{- end }}
