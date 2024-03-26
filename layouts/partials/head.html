@@ -8,4 +8,5 @@
     {{ range .Site.Params.CustomStyles }}
     <link rel="stylesheet" href="{{ . | relURL }}">
     {{ end }}
+    {{ with .Site.Params.Favicon }}<link rel="icon" href="{{ . | relURL }}">{{ end }}
 </head>
