@@ -25,8 +25,16 @@
                 {{- end }}
             {{- end }}
         </div>
+        <div class="navbar-nav bd-navbar-nav flex-row ml-md-auto"></div>
+        <div class="navbar-nav bd-navbar-nav flex-row">
+            {{- with .Site.Menus.sub }}
+                {{- range sort . "Weight" }}
+                    {{ partial "nav-item.html" (dict "sect" . "currentnode" $currentNode "menuName" "sub" "dropdown_dark" true) -}}
+                {{- end }}
+            {{- end }}
+        </div>
         {{ with $searchPage := .Site.GetPage .Site.Params.SearchPage }}
-            <div class="navbar-nav bd-navbar-nav flex-row text-light ml-md-auto ">
+            <div class="navbar-nav bd-navbar-nav flex-row text-light">
                 <div class="search-form">
                     <form class="form-inline" href="{{ $searchPage.RelPermalink | relURL }}" method="get" id="searchBox">
                         <div class="input-group">
@@ -39,12 +47,5 @@
                 </div>
             </div>
         {{ end }}
-        <div class="navbar-nav bd-navbar-nav flex-row">
-            {{- with .Site.Menus.sub }}
-                {{- range sort . "Weight" }}
-                    {{ partial "nav-item.html" (dict "sect" . "currentnode" $currentNode "menuName" "sub" "dropdown_dark" true) -}}
-                {{- end }}
-            {{- end }}
-        </div>
     </div>
 </header>
