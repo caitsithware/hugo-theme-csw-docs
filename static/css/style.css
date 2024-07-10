@@ -429,3 +429,7 @@ a[href^="http://"]::after, a[href^="https://"]::after {
     content: "\e900";
     font-size: 0.8em;
 }
+
+figcaption p {
+    color: gray;
+}
